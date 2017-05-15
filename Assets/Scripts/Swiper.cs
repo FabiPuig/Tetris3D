@@ -12,6 +12,9 @@ public class Swiper : MonoBehaviour {
     private float maxSwipeTime = 0.5f;
     private int timer = 0;
 
+    private int timerPlatform;
+    private int timeDivider;
+
 
     // Update is called once per frame
     void Update()
@@ -31,10 +34,27 @@ public class Swiper : MonoBehaviour {
             Debug.Log("timer " + timer);
         }
 
-        if (timer > 30 && (timer % 5 == 0))
+#if UNITY_ANDROID
+
+        timerPlatform = 10;
+        timeDivider = 2;
+        if (timer > timerPlatform )
         {
             FindObjectOfType<Group>().moveDown();
         }
+#endif
+
+#if UNITY_STANDALONE
+
+        timerPlatform = 30;
+        timeDivider = 5;
+        if (timer > timerPlatform && (timer % timeDivider == 0))
+        {
+            FindObjectOfType<Group>().moveDown();
+        }
+#endif
+
+
 
         if (Input.touchCount > 0)
         {

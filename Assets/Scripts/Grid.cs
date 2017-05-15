@@ -7,7 +7,7 @@ public class Grid : MonoBehaviour {
 
     // The Grid itself
     public static int w = 10;
-    public static int h = 20;
+    public static int h = 22;
     public static Transform[,] grid = new Transform[w, h];
 
     // Rows deleted

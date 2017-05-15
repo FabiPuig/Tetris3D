@@ -229,14 +229,14 @@ public class Group : MonoBehaviour {
 
     bool isValidGridPos() {        
     	foreach (Transform child in transform) {
-        	Vector2 v = Grid.roundVec3(child.position);
+        	Vector3 v = Grid.roundVec3(child.position);
 
         	// Not inside Border?
         	if (!Grid.insideBorder(v))
             	return false;
 
-        	// Block in grid cell (and not part of same group)?
-        	if (Grid.grid[(int)v.x, (int)v.y] != null &&
+            // Block in grid cell (and not part of same group)?
+            if (Grid.grid[(int)v.x, (int)v.y] != null &&
             	Grid.grid[(int)v.x, (int)v.y].parent != transform)
         	    return false;
     	}
